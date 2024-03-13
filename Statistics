@@ -1,0 +1,22 @@
+FC = "รีเซ็ท";
+Title = "PHANToM Stat v.2.0";
+Message = "งานที่กดรับทั้งหมด - {global_all}\nงานที่ได้รับ - {global_get}\nงานที่หลุด - {global_miss}\n\nเปอร์เซ็นการได้งาน {global_getp}%\nคะแนนการรับงาน {global_rate} คะแนน";
+global_rate = ((global_get*100)/global_miss)+0.00;
+
+global_all = global_miss + global_get;
+if(global_all == 0){global_getp = 0}
+else if(global_all != 0){
+global_getp = (global_get*100)/global_all;};
+if(global_rate >= 80){IC = "🐲";TC ="ปรมจารย์ปาดทุกสำนัก"}
+else if(global_rate <80 and global_rate >= 60)
+{IC = "🦚";TC ="นักปาดมือทอง"}
+else if(global_rate <60 and global_rate >= 40)
+{IC = "🦮";TC ="นักปาดฝึกหัด"}
+else if(global_rate <40 and global_rate >= 20)
+{IC = "🐔";TC ="ของกาก อย่าปากเก่ง"}
+else if(global_rate <20 and global_rate >= 0)
+{IC = "🐣";TC ="ยังโดนปาดไม่พออีกหรอ?"};
+if(global_all == 0){IC = "😐" ; TC="เอาการเอางานมั่งสิ"}
+else if(global_all != 0 and global_get == 0){IC = "😮‍💨" ;TC = "เข้าบ้านนอนดีกว่ามั้ง..."};
+if(global_getp > 100){global_getp = 100};
+  
